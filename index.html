@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en" data-lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sesgâh — local AI voice studio with real emotions</title>
+<meta name="description" content="Sesgâh is a local AI voice studio for Windows: emotional text-to-speech in 23 languages, 500+ ready voices, voice cloning from 10 seconds, songs from lyrics and a live voice changer. No internet, no account, no credits.">
+<meta name="theme-color" content="#140c24">
+<link rel="icon" type="image/png" href="assets/img/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/img/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sesgâh — your voice studio that lives on your computer">
+<meta property="og:description" content="Emotional text-to-speech in 23 languages, 500+ voices, voice cloning, songs from lyrics and a live voice changer. 100% local. · Bilgisayarında yaşayan ses atölyesi.">
+<meta property="og:url" content="https://feomatif.github.io/sesgah/">
+<meta property="og:image" content="https://feomatif.github.io/sesgah/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script defer src="assets/js/site.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h1.5M6.5 8.5v7M10 5v14M13.5 8v8M17 10v4M20.5 11.5v1"/></symbol>
+    <symbol id="i-smile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1 1.4 2.2 2 3.5 2s2.5-.6 3.5-2M9 9.5h.01M15 9.5h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.4-2.9 7.9-7 9.5-4.1-1.6-7-5.1-7-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.4-4.6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8.5" r="3.3"/><path d="M3 19.5c.8-3.2 3.1-5 6-5s5.2 1.8 6 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16.4 14.6c2.3.2 4 1.7 4.6 4.4"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21M8.5 21h7"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5.5l11-2V16"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></symbol>
+    <symbol id="i-disc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 6a6 6 0 016 6"/></symbol>
+    <symbol id="i-live" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.2"/><path d="M8 8a5.6 5.6 0 000 8M16 8a5.6 5.6 0 010 8M5 5a10 10 0 000 14M19 5a10 10 0 010 14"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 19l5-14 5 14M5.5 14.5h6"/><path d="M15.5 12.4c.8-.8 1.8-1.2 2.9-1.2 1.8 0 2.6 1 2.6 2.8V19M21 15.4c-3.5-.3-5.5.5-5.5 2 0 1 .8 1.6 1.9 1.6 1.6 0 3.1-1.1 3.6-2.6"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v4M15 3v4M6.5 7h11v3.5a5.5 5.5 0 01-11 0zM12 16v5"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 100 18c1.2 0 1.8-.8 1.8-1.7 0-1.4-1.3-1.8-1.3-3 0-1 .8-1.7 1.9-1.7H17a4 4 0 004-4C21 6.3 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 018 0v3"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.2v13.6L19 12z"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 007.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 015.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></symbol>
+  </defs>
+</svg>
+
+<div class="sky" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="stars"></div><div class="stars2"></div><div class="grain"></div></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/img/icon-180.png" alt="" width="32" height="32"><span>Sesgâh</span></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#features"><span lang="en">Features</span><span lang="tr">Özellikler</span></a>
+      <a href="#emotions"><span lang="en">Emotions</span><span lang="tr">Duygular</span></a>
+      <a href="#languages"><span lang="en">Languages</span><span lang="tr">Diller</span></a>
+      <a href="#screens"><span lang="en">Screenshots</span><span lang="tr">Görüntüler</span></a>
+      <a href="#requirements"><span lang="en">Requirements</span><span lang="tr">Gereksinimler</span></a>
+      <a href="#credits"><span lang="en">Credits</span><span lang="tr">Künye</span></a>
+    </nav>
+    <div class="right">
+      <div class="langs" role="group" aria-label="Language / Dil">
+        <button type="button" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="tr" aria-pressed="false">TR</button>
+      </div>
+      <a class="icon-btn" href="https://github.com/feomatif/sesgah" aria-label="GitHub"><svg><use href="#i-gh"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- giriş -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <img class="logo" src="assets/img/icon-512.png" alt="Sesgâh" width="84" height="84">
+        <h1 class="grad">Sesgâh</h1>
+        <p class="tag" lang="en">Your voice studio that lives on your computer.</p>
+        <p class="tag" lang="tr">Bilgisayarında yaşayan ses atölyesi.</p>
+        <p class="sub" lang="en">Sesgâh reads your text the way a person would: it laughs, whispers, shouts and sighs — in 500+ ready voices, in 23 languages, or in your own voice from a 10-second recording. It also writes songs from your lyrics and changes your voice live. Everything runs on your own graphics card and works offline: no account, no credits.</p>
+        <p class="sub" lang="tr">Sesgâh yazdığın metni bir insan gibi okur: güler, fısıldar, bağırır, iç çeker. 500'den fazla hazır sesle, 23 dilde ya da 10 saniyelik kaydınla kendi sesinle. Sözlerinden şarkı yapar, sesini canlı değiştirir. Her şey kendi ekran kartında, internetsiz çalışır: hesap yok, kredi yok.</p>
+        <ul class="chips">
+          <li><span lang="en"><b>100%</b> local</span><span lang="tr"><b>Tamamen</b> yerel</span></li>
+          <li><b>500+</b> <span lang="en">voices</span><span lang="tr">ses</span></li>
+          <li><b>23</b> <span lang="en">languages</span><span lang="tr">dil</span></li>
+          <li><span lang="en">Real emotions</span><span lang="tr">Gerçek duygular</span></li>
+          <li><span lang="en">Voice cloning</span><span lang="tr">Ses klonlama</span></li>
+          <li><span lang="en">Songs from lyrics</span><span lang="tr">Sözlerden şarkı</span></li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="#video"><svg><use href="#i-play"/></svg><span lang="en">Watch the promo</span><span lang="tr">Tanıtımı izle</span></a>
+          <a class="btn" href="https://github.com/feomatif/sesgah"><svg><use href="#i-gh"/></svg>GitHub</a>
+        </div>
+        <p class="note" lang="en">The name: <em>ses</em> (voice) + <em>-gâh</em>, Persian for “place”, as in the makam names Segâh and Çârgâh. “The place of voice.”</p>
+        <p class="note" lang="tr">Adı: <em>ses</em> + Farsçadan gelen <em>-gâh</em> (“yer”; Segâh, Çârgâh makamlarındaki gibi). “Sesin yeri.”</p>
+      </div>
+      <div class="shot3d">
+        <div class="frame glass">
+          <img src="assets/img/shots/tts.webp" width="1600" height="1000" decoding="async"
+               alt="Sesgâh text-to-speech page with emotion tags and a generated waveform"
+               data-alt-en="Sesgâh text-to-speech page with emotion tags and a generated waveform"
+               data-alt-tr="Sesgâh'ın metinden ses sayfası: duygu etiketleri ve üretilmiş ses dalgası">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- video -->
+  <section class="video" id="video">
+    <div class="wrap reveal">
+      <div class="eyebrow"><span lang="en">Promo</span><span lang="tr">Tanıtım</span></div>
+      <h2 lang="en">Every voice in this video is <span class="grad">Sesgâh</span>.</h2>
+      <h2 lang="tr">Bu videodaki bütün sesler <span class="grad">Sesgâh</span>.</h2>
+      <p class="lead" lang="en">16 voices, 8 languages, 6 emotions and a song, all generated on one PC and checked line by line with Whisper.</p>
+      <p class="lead" lang="tr">16 ses, 8 dil, 6 duygu ve bir şarkı: hepsi tek bir bilgisayarda üretildi, satır satır Whisper'la dinlendi.</p>
+      <div class="player glass">
+        <video controls preload="none" playsinline poster="assets/img/poster.jpg" width="1920" height="1080">
+          <source src="assets/video/sesgah-tanitim.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="player-cap">
+        <span lang="en">2:41 · 1080p · Turkish narration with on-screen subtitles</span>
+        <span lang="tr">2:41 · 1080p · Türkçe anlatım, ekranda altyazı</span>
+        <span lang="en">Music: cynicmusic, Ruskerdax (CC0) · <a href="#credits">full credits</a></span>
+        <span lang="tr">Müzik: cynicmusic, Ruskerdax (CC0) · <a href="#credits">tam künye</a></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- özellikler -->
+  <section id="features">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">Features</span><span lang="tr">Özellikler</span></div>
+        <h2 lang="en">Everything a voice needs, in one window</h2>
+        <h2 lang="tr">Bir sesin ihtiyacı olan her şey tek pencerede</h2>
+        <p class="lead" lang="en">Text to speech, a voice library, batch lines, a voice changer and a song studio share one engine and one graphics card. Heavy models load in a separate engine process, stay warm while you work and free the graphics card after 15 idle minutes.</p>
+        <p class="lead" lang="tr">Metinden ses, ses kütüphanesi, toplu replik, ses değiştirici ve şarkı stüdyosu aynı motoru ve aynı ekran kartını paylaşır. Ağır modeller ayrı bir motor sürecinde yüklenir, çalışırken sıcak kalır, 15 dakika boşta kalınca ekran kartını boşaltır.</p>
+      </div>
+      <div class="grid">
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-wave"/></svg></div>
+          <h3><span lang="en">Speech with emotion</span><span lang="tr">Duygulu metinden ses</span></h3>
+          <p lang="en">Write naturally and add tags like <code>[shout]</code>, <code>[whisper]</code> or <code>[sad]</code>. Built on Chatterbox Multilingual. For shouting, anger, joy and fear, if a voice has no recording of its own, real actor performances are converted into that voice and used as the emotion example.</p>
+          <p lang="tr">Doğal yaz, <code>[bağır]</code>, <code>[fısılda]</code>, <code>[üzgün]</code> gibi etiketler ekle. Chatterbox Multilingual üzerine kurulu. Bağırma, öfke, neşe ve korku için sesin kendi kaydı yoksa gerçek oyuncu kayıtları o sesin tınısına çevrilip duygu örneği olarak verilir.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-smile"/></svg></div>
+          <h3><span lang="en">A real whisper, real laughs</span><span lang="tr">Gerçek fısıltı, gerçek kahkaha</span></h3>
+          <p lang="en">Whispers are rebuilt without pitch, so they sound breathy instead of just quiet. Laughs, chuckles, sighs, gasps and coughs are added in the voice's own timbre.</p>
+          <p lang="tr">Fısıltı perdesiz, nefesle yeniden kurulur; kısık konuşma gibi değil gerçek fısıltı gibi duyulur. Gülme, kıkırdama, iç çekme, şaşırma ve öksürme sesin kendi tınısıyla eklenir.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-check"/></svg></div>
+          <h3><span lang="en">Every sentence checked</span><span lang="tr">Her cümle denetlenir</span></h3>
+          <p lang="en">Each sentence is generated as 1, 2 or 4 candidates. Whisper listens, scores the pronunciation of every word and keeps the most accurate, natural take. Cut-off or slurred takes are regenerated automatically.</p>
+          <p lang="tr">Her cümle 1, 2 ya da 4 aday olarak üretilir. Whisper dinler, her kelimenin telaffuzunu puanlar, en doğru ve en doğal olanı seçer. Kesik ya da kayan okumalar kendiliğinden yeniden üretilir.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-bolt"/></svg></div>
+          <h3><span lang="en">Instant start</span><span lang="tr">Anlık başlat</span></h3>
+          <p lang="en">You hear the first word 0.3–0.5 s after pressing Speak, while the rest is still being generated. If a streamed take fails the check, it is cut off and replayed from the verified take.</p>
+          <p lang="tr">Seslendir'e bastıktan 0,3-0,5 sn sonra ilk kelime duyulur, kalanı üretilirken çalar. Akışla çalınan aday denetimden geçemezse kesilir, doğrulanmış hâliyle yeniden çalınır.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-users"/></svg></div>
+          <h3><span lang="en">500+ ready voices</span><span lang="tr">500'den fazla hazır ses</span></h3>
+          <p lang="en">230+ Turkish and 230+ English voices, plus native voices in 11 more languages. Search, preview, filter by language and gender, record with your mic or drop in a file.</p>
+          <p lang="tr">230'dan fazla Türkçe ve 230'dan fazla İngilizce ses, 11 dilde daha ana dili ses. Ara, dinle, dile ve cinsiyete göre süz, mikrofonla kaydet ya da dosya sürükle.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-mic"/></svg></div>
+          <h3><span lang="en">Your own voice</span><span lang="tr">Kendi sesin</span></h3>
+          <p lang="en">A clean 10–20 second recording is enough, no training needed. Timbre, pitch and “s” matching keep the result close to the recording, and every recording gets a quality score.</p>
+          <p lang="tr">10-20 saniyelik temiz bir kayıt yeter, model eğitmek gerekmez. Tını, perde ve s sesi eşleme sonucu kayda yakın tutar; her kaydın kalite puanı görünür.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-note"/></svg></div>
+          <h3><span lang="en">Songs from lyrics</span><span lang="tr">Sözlerden şarkı</span></h3>
+          <p lang="en">Write lyrics and pick a style: pop, ballad, arabesque, folk, rock, rap, EDM, jazz, cinematic, lo-fi and more. ACE-Step 1.5 composes, Whisper picks the variant with the clearest lyrics, and the vocal is converted to your chosen voice, mixed and mastered.</p>
+          <p lang="tr">Sözleri yaz, tarzı seç: pop, balad, arabesk, halk müziği, rock, rap, elektronik, caz, sinematik, lo-fi ve dahası. ACE-Step 1.5 besteler, Whisper sözleri en net okunan varyantı seçer, vokal seçtiğin sese çevrilir, miks ve mastering yapılır.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-disc"/></svg></div>
+          <h3><span lang="en">Song covers</span><span lang="tr">Şarkıyı sese çevir</span></h3>
+          <p lang="en">Separate the vocal from a song, remove reverb and backing vocals, convert it to a voice (Seed-VC, YingMusic-SVC or your RVC models through Applio), check it against the lyrics and mix it back.</p>
+          <p lang="tr">Şarkının vokalini ayır, yankıyı ve arka vokali temizle, bir sese çevir (Seed-VC, YingMusic-SVC ya da Applio'daki RVC modellerin), sözlerle kontrol et, geri miksle.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-live"/></svg></div>
+          <h3><span lang="en">Live voice changer</span><span lang="tr">Canlı ses değiştirici</span></h3>
+          <p lang="en">Speak into your mic and come out as another voice with about 0.27–0.4 s of latency. Send it to headphones or to a virtual cable for Discord and OBS.</p>
+          <p lang="tr">Mikrofona konuş, başka bir sesle çık: gecikme yaklaşık 0,27-0,4 sn. Kulaklığa ya da Discord ve OBS için sanal kabloya gönder.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-list"/></svg></div>
+          <h3><span lang="en">Batch lines</span><span lang="tr">Toplu replik</span></h3>
+          <p lang="en">Hundreds of game or video lines, each with its own voice and emotion, generated in one go from a .txt or .csv file, with duration and score for every line.</p>
+          <p lang="tr">Oyun ya da video için yüzlerce replik; her biri kendi sesi ve duygusuyla, .txt ya da .csv dosyasından tek seferde. Her satırın süresi ve puanı görünür.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-text"/></svg></div>
+          <h3><span lang="en">Turkish-first text handling</span><span lang="tr">Türkçe metin hazırlığı</span></h3>
+          <p lang="en">Numbers, ordinals, Roman numerals, times, fractions, phone numbers, units and abbreviations are read the Turkish way (TBMM → “te be me me”, 14.30'da → “on dört otuzda”). Add your own words to the pronunciation dictionary.</p>
+          <p lang="tr">Sayılar, sıra sayıları, Roma rakamları, saatler, kesirler, telefonlar, birimler ve kısaltmalar Türkçe okunur (TBMM → “te be me me”, 14.30'da → “on dört otuzda”). Kendi kelimelerini telaffuz sözlüğüne ekle.</p>
+        </article>
+        <article class="card glass reveal">
+          <div class="ic"><svg><use href="#i-plug"/></svg></div>
+          <h3><span lang="en">Local API</span><span lang="tr">Yerel API</span></h3>
+          <p lang="en">Other apps on the same computer, such as <a href="https://github.com/BerTaDev/SosyalStudyo">SosyalStudyo</a>, can list Sesgâh's voices and voice their scripts through a token-protected API that only listens on 127.0.0.1.</p>
+          <p lang="tr">Aynı bilgisayardaki uygulamalar (ör. <a href="https://github.com/BerTaDev/SosyalStudyo">SosyalStudyo</a>) Sesgâh'ın seslerini listeleyip metinlerini seslendirebilir. API yalnızca 127.0.0.1'i dinler ve anahtar ister.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- duygular -->
+  <section id="emotions">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">Emotions</span><span lang="tr">Duygular</span></div>
+        <h2 lang="en">Tell it how to feel</h2>
+        <h2 lang="tr">Nasıl hissedeceğini sen söyle</h2>
+        <p class="lead" lang="en">Wrap any part of your text in a tag. Tags work in every language and can be written in Turkish or English. Each emotion has its own loudness, so a shout really is louder than a whisper.</p>
+        <p class="lead" lang="tr">Metnin istediğin kısmını bir etiketle sar. Etiketler her dilde çalışır, Türkçe ya da İngilizce yazılabilir. Her duygunun kendi ses düzeyi var: bağırma fısıltıdan gerçekten yüksek.</p>
+      </div>
+      <div class="emo reveal">
+        <div class="e happy"><b><span lang="en">JOY</span><span lang="tr">NEŞE</span></b><code>[neşeli]</code> <code>[happy]</code><span lang="en">Pitch rises, the voice brightens.</span><span lang="tr">Perde yükselir, ses parlaklaşır.</span></div>
+        <div class="e sad"><b><span lang="en">SADNESS</span><span lang="tr">HÜZÜN</span></b><code>[üzgün]</code> <code>[sad]</code><span lang="en">Softer, slower, quieter.</span><span lang="tr">Daha yumuşak, yavaş ve alçak.</span></div>
+        <div class="e angry"><b><span lang="en">ANGER</span><span lang="tr">ÖFKE</span></b><code>[öfkeli]</code> <code>[angry]</code><span lang="en">Tense, sharp and 3 dB louder.</span><span lang="tr">Gergin, sert ve 3 dB yüksek.</span></div>
+        <div class="e fear"><b><span lang="en">FEAR</span><span lang="tr">KORKU</span></b><code>[korkmuş]</code> <code>[scared]</code><span lang="en">Higher and a little faster.</span><span lang="tr">Daha ince ve biraz daha hızlı.</span></div>
+        <div class="e whisper"><b><span lang="en">WHISPER</span><span lang="tr">FISILTI</span></b><code>[fısılda]</code> <code>[whisper]</code><span lang="en">Breath only, no pitch.</span><span lang="tr">Yalnız nefes, perde yok.</span></div>
+        <div class="e shout"><b><span lang="en">SHOUT</span><span lang="tr">BAĞIR</span></b><code>[bağır]</code> <code>[shout]</code><span lang="en">Full effort, 5 dB louder.</span><span lang="tr">Tam efor, 5 dB yüksek.</span></div>
+      </div>
+      <div class="split">
+        <div class="editor glass reveal" lang="en">
+          <span class="ln"><span class="t">[happy]</span> We won! I can't believe it, we actually won! <span class="t">[laugh]</span></span>
+          <span class="ln"><span class="t">[whisper]</span> Don't tell anyone... this stays between us. <span class="t">[/whisper]</span></span>
+          <span class="ln"><span class="t">[shout]</span> Everybody out, now! <span class="t">[/shout]</span></span>
+          <span class="ln"><span class="t">[sad]</span> I just wanted to hear your voice once more. <span class="t">[sigh]</span></span>
+          <span class="ln"><span class="t">[pause 0.8]</span> <span class="t">[slow]</span> Goodbye.</span>
+        </div>
+        <div class="editor glass reveal" lang="tr">
+          <span class="ln"><span class="t">[neşeli]</span> Kazandık! İnanamıyorum, gerçekten kazandık! <span class="t">[gül]</span></span>
+          <span class="ln"><span class="t">[fısılda]</span> Sakın kimseye söyleme... bu aramızda kalsın. <span class="t">[/fısılda]</span></span>
+          <span class="ln"><span class="t">[bağır]</span> Herkes dışarı, hemen! <span class="t">[/bağır]</span></span>
+          <span class="ln"><span class="t">[üzgün]</span> Gitmeden önce sesini bir kez daha duymak istedim. <span class="t">[iç çek]</span></span>
+          <span class="ln"><span class="t">[es 0.8]</span> <span class="t">[yavaş]</span> Hoşça kal.</span>
+        </div>
+        <div class="nv glass reveal">
+          <h3><span lang="en">Sounds without words</span><span lang="tr">Sözsüz sesler</span></h3>
+          <ul>
+            <li><code>[gül]</code><span lang="en">laugh</span><span lang="tr">gülme</span></li>
+            <li><code>[kıkırda]</code><span lang="en">chuckle</span><span lang="tr">kıkırdama</span></li>
+            <li><code>[iç çek]</code><span lang="en">sigh</span><span lang="tr">iç çekme</span></li>
+            <li><code>[şaşır]</code><span lang="en">gasp</span><span lang="tr">şaşırma</span></li>
+            <li><code>[öksür]</code><span lang="en">cough</span><span lang="tr">öksürük</span></li>
+            <li><code>[boğaz temizle]</code><span lang="en">clear throat</span><span lang="tr">boğaz temizleme</span></li>
+            <li><code>[inle]</code><span lang="en">groan</span><span lang="tr">inleme</span></li>
+            <li><code>[şşş]</code><span lang="en">shh</span><span lang="tr">susturma</span></li>
+            <li><code>[nefes]</code><span lang="en">breath</span><span lang="tr">nefes</span></li>
+          </ul>
+          <p lang="en">English names work too: <code>[laugh]</code> <code>[sigh]</code> <code>[cough]</code> <code>[pause 0.8]</code> <code>[fast]</code> <code>[slow]</code>. Laughs come from public-domain (CC0) human recordings converted into the chosen voice, or are generated with Chatterbox Turbo; an audio classifier keeps the most convincing takes. “Shh” is synthesized.</p>
+          <p lang="tr">İngilizce adlar da çalışır: <code>[laugh]</code> <code>[sigh]</code> <code>[cough]</code> <code>[pause 0.8]</code> <code>[fast]</code> <code>[slow]</code>. Kahkahalar kamu malı (CC0) gerçek insan kayıtlarının seçilen sese çevrilmesiyle ya da Chatterbox Turbo ile üretilir; bir ses sınıflandırıcı en inandırıcılarını seçer. “Şşş” sentezlenir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- diller -->
+  <section id="languages">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">Languages</span><span lang="tr">Diller</span></div>
+        <h2 lang="en">23 languages</h2>
+        <h2 lang="tr">23 dil</h2>
+        <p class="lead" lang="en">Speech works in all 23 languages of Chatterbox Multilingual. Turkish and English have hundreds of ready voices, and 11 more languages come with 2–4 native voices each. In the other 10 you can use any voice (its accent may carry over) or clone a native speaker from a 10-second recording.</p>
+        <p class="lead" lang="tr">Konuşma, Chatterbox Multilingual'ın 23 dilinin hepsinde çalışır. Türkçe ve İngilizcede yüzlerce hazır ses var, 11 dilde daha 2-4 ana dili ses hazır. Kalan 10 dilde istediğin sesi kullanabilir (aksanı taşınabilir) ya da 10 saniyelik kayıtla ana dili bir sesi klonlayabilirsin.</p>
+      </div>
+      <div class="langs-grid reveal">
+        <div class="lg rich"><span class="code">tr</span><div class="native">Türkçe</div><div class="name"><span lang="en">Turkish</span><span lang="tr">Türkçe</span></div><div class="v"><span lang="en">230+ voices</span><span lang="tr">230+ ses</span></div></div>
+        <div class="lg rich"><span class="code">en</span><div class="native">English</div><div class="name"><span lang="en">English</span><span lang="tr">İngilizce</span></div><div class="v"><span lang="en">230+ voices</span><span lang="tr">230+ ses</span></div></div>
+        <div class="lg some"><span class="code">ar</span><div class="native"><bdi dir="rtl">العربية</bdi></div><div class="name"><span lang="en">Arabic</span><span lang="tr">Arapça</span></div><div class="v"><span lang="en">3 voices</span><span lang="tr">3 ses</span></div></div>
+        <div class="lg some"><span class="code">zh</span><div class="native">中文</div><div class="name"><span lang="en">Chinese</span><span lang="tr">Çince</span></div><div class="v"><span lang="en">4 voices</span><span lang="tr">4 ses</span></div></div>
+        <div class="lg some"><span class="code">fr</span><div class="native">Français</div><div class="name"><span lang="en">French</span><span lang="tr">Fransızca</span></div><div class="v"><span lang="en">3 voices</span><span lang="tr">3 ses</span></div></div>
+        <div class="lg some"><span class="code">de</span><div class="native">Deutsch</div><div class="name"><span lang="en">German</span><span lang="tr">Almanca</span></div><div class="v"><span lang="en">4 voices</span><span lang="tr">4 ses</span></div></div>
+        <div class="lg some"><span class="code">hi</span><div class="native">हिन्दी</div><div class="name"><span lang="en">Hindi</span><span lang="tr">Hintçe</span></div><div class="v"><span lang="en">4 voices</span><span lang="tr">4 ses</span></div></div>
+        <div class="lg some"><span class="code">it</span><div class="native">Italiano</div><div class="name"><span lang="en">Italian</span><span lang="tr">İtalyanca</span></div><div class="v"><span lang="en">4 voices</span><span lang="tr">4 ses</span></div></div>
+        <div class="lg some"><span class="code">ja</span><div class="native">日本語</div><div class="name"><span lang="en">Japanese</span><span lang="tr">Japonca</span></div><div class="v"><span lang="en">2 voices</span><span lang="tr">2 ses</span></div></div>
+        <div class="lg some"><span class="code">ko</span><div class="native">한국어</div><div class="name"><span lang="en">Korean</span><span lang="tr">Korece</span></div><div class="v"><span lang="en">3 voices</span><span lang="tr">3 ses</span></div></div>
+        <div class="lg some"><span class="code">pt</span><div class="native">Português</div><div class="name"><span lang="en">Portuguese</span><span lang="tr">Portekizce</span></div><div class="v"><span lang="en">4 voices</span><span lang="tr">4 ses</span></div></div>
+        <div class="lg some"><span class="code">ru</span><div class="native">Русский</div><div class="name"><span lang="en">Russian</span><span lang="tr">Rusça</span></div><div class="v"><span lang="en">4 voices</span><span lang="tr">4 ses</span></div></div>
+        <div class="lg some"><span class="code">es</span><div class="native">Español</div><div class="name"><span lang="en">Spanish</span><span lang="tr">İspanyolca</span></div><div class="v"><span lang="en">4 voices</span><span lang="tr">4 ses</span></div></div>
+        <div class="lg"><span class="code">da</span><div class="native">Dansk</div><div class="name"><span lang="en">Danish</span><span lang="tr">Danca</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">nl</span><div class="native">Nederlands</div><div class="name"><span lang="en">Dutch</span><span lang="tr">Hollandaca</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">fi</span><div class="native">Suomi</div><div class="name"><span lang="en">Finnish</span><span lang="tr">Fince</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">el</span><div class="native">Ελληνικά</div><div class="name"><span lang="en">Greek</span><span lang="tr">Yunanca</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">he</span><div class="native"><bdi dir="rtl">עברית</bdi></div><div class="name"><span lang="en">Hebrew</span><span lang="tr">İbranice</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">ms</span><div class="native">Bahasa Melayu</div><div class="name"><span lang="en">Malay</span><span lang="tr">Malayca</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">no</span><div class="native">Norsk</div><div class="name"><span lang="en">Norwegian</span><span lang="tr">Norveççe</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">pl</span><div class="native">Polski</div><div class="name"><span lang="en">Polish</span><span lang="tr">Lehçe</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">sw</span><div class="native">Kiswahili</div><div class="name"><span lang="en">Swahili</span><span lang="tr">Svahili</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+        <div class="lg"><span class="code">sv</span><div class="native">Svenska</div><div class="name"><span lang="en">Swedish</span><span lang="tr">İsveççe</span></div><div class="v"><span lang="en">any voice or clone</span><span lang="tr">her ses ya da klon</span></div></div>
+      </div>
+      <div class="legend reveal">
+        <span><i style="background:#ffb547"></i><span lang="en">Hundreds of ready voices</span><span lang="tr">Yüzlerce hazır ses</span></span>
+        <span><i style="background:#66b3ff"></i><span lang="en">2–4 native voices</span><span lang="tr">2-4 ana dili ses</span></span>
+        <span><i style="background:#5a5270"></i><span lang="en">Use any voice or clone one</span><span lang="tr">Herhangi bir sesle ya da klonla</span></span>
+      </div>
+      <div class="tbl glass reveal">
+        <table>
+          <thead>
+            <tr><th><span lang="en">What works where</span><span lang="tr">Ne nerede çalışır</span></th><th><span lang="en">Turkish</span><span lang="tr">Türkçe</span></th><th><span lang="en">English</span><span lang="tr">İngilizce</span></th><th><span lang="en">Other 21</span><span lang="tr">Diğer 21 dil</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong lang="en">Speech, emotion tags, sounds without words</strong><strong lang="tr">Konuşma, duygu etiketleri, sözsüz sesler</strong></td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><strong lang="en">Whisper check and automatic retries</strong><strong lang="tr">Whisper denetimi ve kendiliğinden yeniden deneme</strong></td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><strong lang="en">Pronunciation dictionary</strong><strong lang="tr">Telaffuz sözlüğü</strong></td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><strong lang="en">Letter-by-letter pronunciation check</strong><strong lang="tr">Harf harf telaffuz denetimi</strong></td><td class="yes">✓</td><td>—</td><td>—</td></tr>
+            <tr><td><strong lang="en">Reading numbers, dates, units and abbreviations</strong><strong lang="tr">Sayı, tarih, birim ve kısaltma okuma</strong></td><td class="yes">✓</td><td class="part"><span lang="en">model's own</span><span lang="tr">modelin kendisi</span></td><td class="part"><span lang="en">model's own</span><span lang="tr">modelin kendisi</span></td></tr>
+            <tr><td><strong lang="en">Lyrics language for songs</strong><strong lang="tr">Şarkıda söz dili</strong></td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td><strong lang="en">Song covers and the live voice changer</strong><strong lang="tr">Şarkı cover ve canlı ses değiştirici</strong></td><td colspan="3"><span lang="en">Any language: they work on sound, not on text.</span><span lang="tr">Her dil: metinle değil sesle çalışırlar.</span></td></tr>
+            <tr><td><strong lang="en">Interface</strong><strong lang="tr">Arayüz</strong></td><td colspan="3"><span lang="en">Turkish</span><span lang="tr">Türkçe</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ekran görüntüleri -->
+  <section id="screens">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">Screenshots</span><span lang="tr">Ekran görüntüleri</span></div>
+        <h2 lang="en">A closer look</h2>
+        <h2 lang="tr">Yakından bak</h2>
+      </div>
+      <div class="tabs reveal" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-shot="tts" data-alt-en="Text to speech page" data-alt-tr="Metinden ses sayfası"><span lang="en">Text to speech</span><span lang="tr">Metinden ses</span></button>
+        <button type="button" role="tab" aria-selected="false" data-shot="tags" data-alt-en="Emotion tags in the editor" data-alt-tr="Düzenleyicide duygu etiketleri"><span lang="en">Emotion tags</span><span lang="tr">Duygu etiketleri</span></button>
+        <button type="button" role="tab" aria-selected="false" data-shot="voices" data-alt-en="Voice library" data-alt-tr="Ses kütüphanesi"><span lang="en">Voice library</span><span lang="tr">Ses kütüphanesi</span></button>
+        <button type="button" role="tab" aria-selected="false" data-shot="clone" data-alt-en="Recording your own voice" data-alt-tr="Kendi sesini kaydetme"><span lang="en">Your own voice</span><span lang="tr">Kendi sesin</span></button>
+        <button type="button" role="tab" aria-selected="false" data-shot="vc" data-alt-en="Voice changer with live mode" data-alt-tr="Canlı modlu ses değiştirici"><span lang="en">Voice changer</span><span lang="tr">Ses değiştirici</span></button>
+        <button type="button" role="tab" aria-selected="false" data-shot="song" data-alt-en="Song studio" data-alt-tr="Şarkı stüdyosu"><span lang="en">Song studio</span><span lang="tr">Şarkı stüdyosu</span></button>
+        <button type="button" role="tab" aria-selected="false" data-shot="batch" data-alt-en="Batch lines" data-alt-tr="Toplu replik"><span lang="en">Batch lines</span><span lang="tr">Toplu replik</span></button>
+      </div>
+      <figure class="viewer glass reveal">
+        <img id="shot-img" src="assets/img/shots/tts.webp" width="1600" height="1000" loading="lazy" decoding="async"
+             alt="Text to speech page" data-alt-en="Text to speech page" data-alt-tr="Metinden ses sayfası">
+        <figcaption>
+          <span data-cap="tts"><span lang="en">Type, pick a voice and quality, press Speak. Each part plays as soon as it's ready; the table below shows the accuracy and similarity of every sentence.</span><span lang="tr">Yaz, sesi ve kaliteyi seç, Seslendir'e bas. Her parça hazır olur olmaz çalar; alttaki tabloda her cümlenin doğruluğu ve benzerliği görünür.</span></span>
+          <span data-cap="tags" hidden><span lang="en">Tag buttons insert emotions and sounds where the cursor is.</span><span lang="tr">Etiket düğmeleri duyguyu ve sözsüz sesi imlecin olduğu yere ekler.</span></span>
+          <span data-cap="voices" hidden><span lang="en">Voice cards show language, gender and pitch, and for most voices also age, accent, source and license.</span><span lang="tr">Ses kartlarında dil, cinsiyet ve perde; seslerin çoğunda yaş, aksan, kaynak ve lisans da yazar.</span></span>
+          <span data-cap="clone" hidden><span lang="en">Record or drop in 10–20 seconds; add separate recordings for shouting, anger or whispering if you like.</span><span lang="tr">10-20 saniye kaydet ya da sürükle; istersen bağırma, öfke, fısıltı için ayrı kayıtlar ekle.</span></span>
+          <span data-cap="vc" hidden><span lang="en">Convert a recording, or press Live start to change your voice in real time.</span><span lang="tr">Bir kaydı çevir ya da Canlı başlat ile sesini anında değiştir.</span></span>
+          <span data-cap="song" hidden><span lang="en">Lyrics, style, lyrics language, length and tempo; then the voice that will sing it.</span><span lang="tr">Sözler, tarz, söz dili, süre ve tempo; sonra şarkıyı söyleyecek ses.</span></span>
+          <span data-cap="batch" hidden><span lang="en">One line per row: ID, voice and text, with emotion tags inside the text. Finished lines show a duration and a score.</span><span lang="tr">Her satıra bir replik: numara, ses ve metin; duygu etiketi metnin içinde. Biten satırın süresi ve puanı yazar.</span></span>
+        </figcaption>
+      </figure>
+      <h3 class="reveal" style="margin-top:40px"><span lang="en">Six themes</span><span lang="tr">Altı tema</span></h3>
+      <p class="small reveal" lang="en">Frosted glass cards, glowing buttons and slowly drifting lights, in six color moods.</p>
+      <p class="small reveal" lang="tr">Buzlu cam kartlar, ışıyan düğmeler ve yavaşça kayan ışıklar; altı farklı renk havasında.</p>
+      <div class="themes reveal">
+        <button type="button" aria-pressed="true" data-theme="gunbatimi"><i style="color:#ffb547;background:#ffb547"></i><span lang="en">Sunset</span><span lang="tr">Gün batımı</span></button>
+        <button type="button" aria-pressed="false" data-theme="aurora"><i style="color:#a86bff;background:#a86bff"></i>Aurora</button>
+        <button type="button" aria-pressed="false" data-theme="okyanus"><i style="color:#4fa8ff;background:#4fa8ff"></i><span lang="en">Ocean</span><span lang="tr">Okyanus</span></button>
+        <button type="button" aria-pressed="false" data-theme="neon"><i style="color:#ff4d9a;background:#ff4d9a"></i>Neon</button>
+        <button type="button" aria-pressed="false" data-theme="orman"><i style="color:#3ddc97;background:#3ddc97"></i><span lang="en">Forest</span><span lang="tr">Orman</span></button>
+        <button type="button" aria-pressed="false" data-theme="gece"><i style="color:#d9c08a;background:#d9c08a"></i><span lang="en">Night</span><span lang="tr">Gece</span></button>
+      </div>
+      <figure class="viewer glass reveal">
+        <img id="theme-img" src="assets/img/themes/gunbatimi.webp" width="1200" height="750" loading="lazy" decoding="async"
+             alt="Sesgâh in the selected theme" data-alt-en="Sesgâh in the selected theme" data-alt-tr="Seçilen temada Sesgâh">
+      </figure>
+    </div>
+  </section>
+
+  <!-- hız -->
+  <section id="speed">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">Speed</span><span lang="tr">Hız</span></div>
+        <h2 lang="en">Fast on an 8 GB card</h2>
+        <h2 lang="tr">8 GB kartta bile hızlı</h2>
+        <p class="lead" lang="en">Measured on an RTX 3060 Ti with 8 GB, through the app itself.</p>
+        <p class="lead" lang="tr">RTX 3060 Ti 8 GB'de, uygulamanın kendi yoluyla ölçüldü.</p>
+      </div>
+      <div class="stat">
+        <div class="s glass reveal"><div class="n grad">0.3–0.5 s</div><div class="d" lang="en">until you hear the first word (instant start)</div><div class="d" lang="tr">ilk kelimeyi duyana kadar (anlık başlat)</div></div>
+        <div class="s glass reveal"><div class="n grad">3.3–3.8×</div><div class="d" lang="en">faster than real time: a 45 s paragraph in 11.5–13.5 s, two candidates and a Whisper check per sentence</div><div class="d" lang="tr">gerçek zamandan hızlı: 45 sn'lik paragraf 11,5-13,5 sn'de, cümle başına 2 aday ve Whisper denetimiyle</div></div>
+        <div class="s glass reveal"><div class="n grad">32 s</div><div class="d" lang="en">to compose 40 seconds of music from lyrics</div><div class="d" lang="tr">sözlerden 40 saniyelik müzik bestelemek</div></div>
+        <div class="s glass reveal"><div class="n grad">~3 min</div><div class="d" lang="en">for a 40-second song with 2 variants, vocal separation and voice conversion (models preload while you type the lyrics)</div><div class="d" lang="tr">40 saniyelik şarkı: 2 varyant, vokal ayırma ve sese çevirme dahil (modeller sen sözleri yazarken yüklenir)</div></div>
+        <div class="s glass reveal"><div class="n grad">39 ms</div><div class="d" lang="en">of processing per 80 ms step in the live voice changer</div><div class="d" lang="tr">canlı ses değiştiricide 80 ms'lik adım başına işlem</div></div>
+        <div class="s glass reveal"><div class="n grad">5.8 s</div><div class="d" lang="en">from launch until the engine is ready</div><div class="d" lang="tr">açılıştan motor hazır olana kadar</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- gizlilik ve nasıl çalışır -->
+  <section id="privacy">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">Under the hood</span><span lang="tr">Kaputun altı</span></div>
+        <h2 lang="en">Local, private, out of your way</h2>
+        <h2 lang="tr">Yerel, gizli, ayağına dolanmaz</h2>
+      </div>
+      <div class="two">
+        <div class="box glass reveal">
+          <h3><span lang="en">Privacy</span><span lang="tr">Gizlilik</span></h3>
+          <ul lang="en">
+            <li>No account, no cloud, no credits, no subscription.</li>
+            <li>Your text and audio stay on your computer.</li>
+            <li>The internet is needed only for installation and the first use of each model; after that everything works offline.</li>
+            <li>The local API listens on 127.0.0.1 only, requires a token and rejects requests from web pages.</li>
+          </ul>
+          <ul lang="tr">
+            <li>Hesap yok, bulut yok, kredi yok, abonelik yok.</li>
+            <li>Metnin ve sesin bilgisayarında kalır.</li>
+            <li>İnternet yalnızca kurulumda ve her modelin ilk kullanımında gerekir; sonra her şey çevrim dışı çalışır.</li>
+            <li>Yerel API yalnızca 127.0.0.1'i dinler, anahtar ister, web sayfalarından gelen istekleri reddeder.</li>
+          </ul>
+        </div>
+        <div class="box glass reveal">
+          <h3><span lang="en">How it works</span><span lang="tr">Nasıl çalışır</span></h3>
+          <ul lang="en">
+            <li>The window opens instantly. PyTorch, Chatterbox and Whisper load in a separate engine process that restarts itself if it ever crashes.</li>
+            <li>Models stay warm between jobs and leave the GPU after 15 idle minutes (adjustable), so games and other apps get it back.</li>
+            <li>When another program fills the graphics card, Sesgâh tells you which one and how much it holds.</li>
+            <li>Background preparation of a voice pauses the moment you press Speak and resumes later.</li>
+          </ul>
+          <ul lang="tr">
+            <li>Pencere hemen açılır. PyTorch, Chatterbox ve Whisper ayrı bir motor sürecinde yüklenir; motor çökerse kendiliğinden yeniden başlar.</li>
+            <li>Modeller işler arasında sıcak kalır, 15 dakika kullanılmazsa (ayarlanabilir) ekran kartını oyunlara ve diğer programlara bırakır.</li>
+            <li>Ekran kartını başka bir program doldurursa Sesgâh hangisi olduğunu ve ne kadar tuttuğunu söyler.</li>
+            <li>Bir sesin arka plan hazırlığı Seslendir'e bastığın anda durur, sonra kaldığı yerden sürer.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- gereksinimler -->
+  <section id="requirements">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">Requirements</span><span lang="tr">Gereksinimler</span></div>
+        <h2 lang="en">What you need</h2>
+        <h2 lang="tr">Neye ihtiyacın var</h2>
+      </div>
+      <div class="two">
+        <div class="box glass reveal">
+          <h3><span lang="en">System</span><span lang="tr">Sistem</span></h3>
+          <ul lang="en">
+            <li>Windows 10 or 11, 64-bit</li>
+            <li>NVIDIA graphics card with CUDA; 8 GB of VRAM recommended</li>
+            <li>At least 40 GB of free disk space (Python, models and caches stay inside the app folder)</li>
+            <li>Internet during installation: Python, PyTorch and the song module (about 15 GB)</li>
+            <li>Speech models download the first time they're needed: about 6 GB, up to about 9.5 GB with the Turkish letter check and non-verbal sounds</li>
+            <li>Optional: <a href="https://github.com/IAHispano/Applio">Applio</a> for RVC models, a virtual cable such as VB-CABLE for Discord or OBS</li>
+          </ul>
+          <ul lang="tr">
+            <li>Windows 10 ya da 11, 64 bit</li>
+            <li>CUDA destekli NVIDIA ekran kartı; 8 GB ekran belleği önerilir</li>
+            <li>En az 40 GB boş disk (Python, modeller ve önbellekler uygulama klasöründe kalır)</li>
+            <li>Kurulumda internet: Python, PyTorch ve şarkı modülü (yaklaşık 15 GB)</li>
+            <li>Konuşma modelleri ilk gerektiğinde iner: yaklaşık 6 GB; Türkçe harf denetimi ve sözsüz seslerle birlikte 9,5 GB'a kadar</li>
+            <li>İsteğe bağlı: RVC modelleri için <a href="https://github.com/IAHispano/Applio">Applio</a>, Discord ya da OBS için VB-CABLE gibi sanal kablo</li>
+          </ul>
+        </div>
+        <div class="box glass reveal">
+          <h3><span lang="en">Installation</span><span lang="tr">Kurulum</span></h3>
+          <ol lang="en">
+            <li>Extract the Sesgâh folder to a drive with 40 GB free, on a short path without non-English characters, e.g. <code>D:\Sesgah</code>.</li>
+            <li>Double-click <code>install.bat</code>. It installs Python, PyTorch (CUDA 12.4) and three environments: speech engine, vocal separation and song module. Then it builds <code>Sesgah.exe</code> and adds Desktop and Start menu shortcuts. If the song module can't be installed, everything except songs and emotion transfer still works.</li>
+            <li>Open Sesgâh. Speech models download the first time they're needed.</li>
+          </ol>
+          <ol lang="tr">
+            <li>Sesgâh klasörünü en az 40 GB boş yeri olan bir sürücüye, kısa ve Türkçe karakter içermeyen bir yola çıkar, ör. <code>D:\Sesgah</code>.</li>
+            <li><code>install.bat</code> dosyasına çift tıkla. Python'u, PyTorch'u (CUDA 12.4) ve üç ortamı kurar: konuşma motoru, vokal ayırma ve şarkı modülü. Sonra <code>Sesgah.exe</code>'yi derler, Masaüstü ve Başlat menüsüne kısayol koyar. Şarkı modülü kurulamazsa şarkı ve duygu aktarımı dışında her şey çalışır.</li>
+            <li>Sesgâh'ı aç. Konuşma modelleri ilk gerektiğinde iner.</li>
+          </ol>
+          <p lang="en">Sesgâh isn't publicly downloadable yet. Star or watch <a href="https://github.com/feomatif/sesgah">this repository</a> to follow the project.</p>
+          <p lang="tr">Sesgâh henüz herkese açık olarak indirilemiyor. Projeyi takip etmek için <a href="https://github.com/feomatif/sesgah">bu depoya</a> yıldız ver ya da izlemeye al.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- sss -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">FAQ</span><span lang="tr">SSS</span></div>
+        <h2 lang="en">Questions</h2>
+        <h2 lang="tr">Sorular</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary><span lang="en">Do I need an internet connection?</span><span lang="tr">İnternet gerekiyor mu?</span></summary>
+          <div><span lang="en">Only for installation and the first use of each model. After that Sesgâh works fully offline.</span><span lang="tr">Yalnızca kurulumda ve her modelin ilk kullanımında. Sonra tamamen çevrim dışı çalışır.</span></div>
+        </details>
+        <details>
+          <summary><span lang="en">Are there credits or a subscription?</span><span lang="tr">Kredi ya da abonelik var mı?</span></summary>
+          <div><span lang="en">No. There are no accounts, credits or subscriptions; your graphics card does the work.</span><span lang="tr">Yok. Hesap, kredi, abonelik yok; işi senin ekran kartın yapar.</span></div>
+        </details>
+        <details>
+          <summary><span lang="en">Will it run on AMD, Intel or a Mac?</span><span lang="tr">AMD, Intel ya da Mac'te çalışır mı?</span></summary>
+          <div><span lang="en">Sesgâh needs Windows and an NVIDIA graphics card with CUDA. 8 GB of VRAM is recommended.</span><span lang="tr">Sesgâh Windows ve CUDA destekli bir NVIDIA ekran kartı ister. 8 GB ekran belleği önerilir.</span></div>
+        </details>
+        <details>
+          <summary><span lang="en">What language is the interface in?</span><span lang="tr">Arayüz hangi dilde?</span></summary>
+          <div><span lang="en">Turkish. Speech, tags and songs work in all 23 languages.</span><span lang="tr">Türkçe. Konuşma, etiketler ve şarkı 23 dilin hepsinde çalışır.</span></div>
+        </details>
+        <details>
+          <summary><span lang="en">How do I get the best clone of my voice?</span><span lang="tr">Sesimi en iyi nasıl klonlarım?</span></summary>
+          <div><span lang="en">Record 10–20 seconds of clean speech: one speaker, no music, no echo, with the best part first. Speaking style comes from the first 6 seconds and timbre from the first 10. Then choose the “Best (4 candidates)” quality.</span><span lang="tr">10-20 saniyelik temiz bir kayıt yap: tek kişi, müziksiz, yankısız, en iyi kısmı başta. Konuşma tarzı ilk 6 sn'den, tını ilk 10 sn'den alınır. Kaliteyi “En iyi (4 aday)” yap.</span></div>
+        </details>
+        <details>
+          <summary><span lang="en">A word is mispronounced. What can I do?</span><span lang="tr">Bir kelime yanlış okunuyor, ne yapayım?</span></summary>
+          <div><span lang="en">Sesgâh retries suspicious parts on its own. If a word still sounds off, add it to the pronunciation dictionary spelled the way it's said, for example <code>Sesgâh = ses gâh</code>.</span><span lang="tr">Sesgâh şüpheli parçaları kendiliğinden yeniden dener. Yine de yanlışsa kelimeyi okunuşuyla telaffuz sözlüğüne ekle, ör. <code>Sesgâh = ses gâh</code>.</span></div>
+        </details>
+        <details>
+          <summary><span lang="en">Can I use what I make commercially?</span><span lang="tr">Ürettiklerimi ticari kullanabilir miyim?</span></summary>
+          <div><span lang="en">Check the licenses of the models and voices you use. One optional song-module model is non-commercial (YingMusic-SVC, CC BY-NC 4.0), many ready voices require attribution (CC BY 4.0), and you should only clone voices you have permission to use. This is not legal advice.</span><span lang="tr">Kullandığın modellerin ve seslerin lisansına bak. Şarkı modülündeki isteğe bağlı bir model ticari olmayan kullanım içindir (YingMusic-SVC, CC BY-NC 4.0), hazır seslerin birçoğu atıf ister (CC BY 4.0). Yalnızca izni olan sesleri klonla. Bu bir hukuki tavsiye değildir.</span></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- künye -->
+  <section id="credits" class="credits">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow"><span lang="en">Credits &amp; licenses</span><span lang="tr">Künye ve lisanslar</span></div>
+        <h2 lang="en">Built on open models and open data</h2>
+        <h2 lang="tr">Açık modeller ve açık veriler üzerine kurulu</h2>
+        <p class="lead" lang="en">Sesgâh stands on the work of these projects. Model weights are downloaded from their official sources during installation or on first use; none are included in this repository. Sesgâh is not affiliated with or endorsed by any of them.</p>
+        <p class="lead" lang="tr">Sesgâh bu projelerin emeği üzerinde duruyor. Model ağırlıkları kurulumda ya da ilk kullanımda resmî kaynaklarından iner, bu depoda hiçbiri yok. Sesgâh bu projelerin hiçbiriyle bağlantılı değildir, onlar tarafından desteklenmez.</p>
+      </div>
+
+      <h3 class="reveal"><span lang="en">Models</span><span lang="tr">Modeller</span></h3>
+      <div class="tbl glass reveal">
+        <table>
+          <thead><tr><th><span lang="en">Model</span><span lang="tr">Model</span></th><th><span lang="en">Used for</span><span lang="tr">Ne için</span></th><th><span lang="en">License</span><span lang="tr">Lisans</span></th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://github.com/resemble-ai/chatterbox">Chatterbox Multilingual</a></strong> · Resemble AI</td><td><span lang="en">speech in 23 languages</span><span lang="tr">23 dilde konuşma</span></td><td>MIT</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/ResembleAI/chatterbox-turbo">Chatterbox Turbo</a></strong> · Resemble AI</td><td><span lang="en">fast decoder, non-verbal sounds</span><span lang="tr">hızlı çözücü, sözsüz sesler</span></td><td>MIT</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/openai/whisper-large-v3-turbo">Whisper large-v3-turbo</a></strong> · OpenAI</td><td><span lang="en">listening check, word timings</span><span lang="tr">dinleme denetimi, kelime zamanları</span></td><td>MIT</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/mpoyraz/wav2vec2-xls-r-300m-cv8-turkish">wav2vec2 XLS-R 300M Turkish</a></strong> · mpoyraz</td><td><span lang="en">letter-by-letter check (Turkish)</span><span lang="tr">harf harf denetim (Türkçe)</span></td><td>Apache-2.0</td></tr>
+            <tr><td><strong><a href="https://github.com/ace-step/ACE-Step-1.5">ACE-Step 1.5</a></strong> + 5Hz LM 0.6B</td><td><span lang="en">songs from lyrics</span><span lang="tr">sözlerden şarkı</span></td><td>MIT</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/Qwen/Qwen3-Embedding-0.6B">Qwen3-Embedding-0.6B</a></strong> · Qwen</td><td><span lang="en">text encoder for ACE-Step</span><span lang="tr">ACE-Step metin kodlayıcısı</span></td><td>Apache-2.0</td></tr>
+            <tr><td><strong><a href="https://github.com/Plachtaa/seed-vc">Seed-VC</a></strong> · Plachta</td><td><span lang="en">voice and singing conversion</span><span lang="tr">konuşma ve şarkı sesi dönüştürme</span></td><td>GPL-3.0</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/GiantAILab/YingMusic-SVC">YingMusic-SVC</a></strong> · GiantAILab</td><td><span lang="en">singing conversion (optional)</span><span lang="tr">şarkı sesi dönüştürme (isteğe bağlı)</span></td><td>CC BY-NC 4.0</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/nvidia/bigvgan_v2_44khz_128band_512x">BigVGAN v2</a></strong> · NVIDIA</td><td><span lang="en">vocoder</span><span lang="tr">vokoder</span></td><td>MIT</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/openai/whisper-small">Whisper small</a></strong> · OpenAI</td><td><span lang="en">speech features for Seed-VC and YingMusic-SVC</span><span lang="tr">Seed-VC ve YingMusic-SVC için konuşma özellikleri</span></td><td>MIT</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/lj1995/VoiceConversionWebUI">RMVPE</a></strong> · RVC WebUI</td><td><span lang="en">pitch tracking</span><span lang="tr">perde takibi</span></td><td>MIT</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/funasr/campplus">CAM++</a></strong> · FunASR</td><td><span lang="en">speaker embedding</span><span lang="tr">konuşmacı vektörü</span></td><td>Apache-2.0</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593">AST (AudioSet)</a></strong> · MIT</td><td><span lang="en">ranking non-verbal sounds</span><span lang="tr">sözsüz sesleri puanlama</span></td><td>BSD-3-Clause</td></tr>
+            <tr><td><strong><a href="https://github.com/nomadkaraoke/python-audio-separator">python-audio-separator</a></strong> + <span lang="en">UVR community models</span><span lang="tr">UVR topluluk modelleri</span></td><td><span lang="en">vocal separation, de-reverb</span><span lang="tr">vokal ayırma, yankı temizleme</span></td><td><span lang="en">MIT (tool); models vary</span><span lang="tr">MIT (araç); modellere göre değişir</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="reveal"><span lang="en">Voices and data</span><span lang="tr">Sesler ve veriler</span></h3>
+      <p class="small reveal" lang="en">Ready voices are short clips from these datasets: trimmed, cleaned, loudness-normalized and turned into voice prompts. Most voices show their source and license inside the app.</p>
+      <p class="small reveal" lang="tr">Hazır sesler bu veri setlerinden kısa kesitlerdir: kırpıldı, temizlendi, ses düzeyi eşitlendi ve ses istemine çevrildi. Seslerin çoğunun kaynağı ve lisansı uygulamanın içinde yazar.</p>
+      <div class="tbl glass reveal">
+        <table>
+          <thead><tr><th><span lang="en">Source</span><span lang="tr">Kaynak</span></th><th><span lang="en">Used for</span><span lang="tr">Ne için</span></th><th><span lang="en">License</span><span lang="tr">Lisans</span></th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://commonvoice.mozilla.org/tr/datasets">Mozilla Common Voice 22.0</a></strong> · <span lang="en">Common Voice contributors</span><span lang="tr">Common Voice katılımcıları</span></td><td><span lang="en">Turkish voices</span><span lang="tr">Türkçe sesler</span></td><td>CC0-1.0</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/datasets/Scicom-intl/CommonVoice22-Sidon-HQ">Common Voice 22 Sidon HQ</a></strong> · Scicom-intl, sarulab-speech Sidon</td><td><span lang="en">Turkish voices</span><span lang="tr">Türkçe sesler</span></td><td>CC0-1.0</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/datasets/MushanW/GLOBE">GLOBE</a></strong> · Wenbin Wang, Yang Song, Sanjay Jha (UNSW)</td><td><span lang="en">English voices</span><span lang="tr">İngilizce sesler</span></td><td>CC0-1.0</td></tr>
+            <tr><td><strong><a href="https://www.openslr.org/141/">LibriTTS-R</a></strong> · Koizumi et al. (Google); <span lang="en">LibriVox volunteers</span><span lang="tr">LibriVox gönüllüleri</span></td><td><span lang="en">English voices</span><span lang="tr">İngilizce sesler</span></td><td>CC BY 4.0</td></tr>
+            <tr><td><strong><a href="https://datashare.ed.ac.uk/handle/10283/3443">CSTR VCTK Corpus 0.92</a></strong> · Junichi Yamagishi, Christophe Veaux, Kirsten MacDonald (University of Edinburgh)</td><td><span lang="en">English voices</span><span lang="tr">İngilizce sesler</span></td><td>CC BY 4.0</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/datasets/google/fleurs-r">FLEURS-R</a></strong> · Ma et al. 2024; FLEURS: Conneau et al. 2022 (Google)</td><td><span lang="en">voices in 12 languages</span><span lang="tr">12 dilde sesler</span></td><td>CC BY 4.0</td></tr>
+            <tr><td><strong><a href="https://www.openslr.org/146/">CML-TTS</a></strong> · Oliveira, Casanova, Candido Junior, Soares, Galvão Filho; <span lang="en">LibriVox volunteers</span><span lang="tr">LibriVox gönüllüleri</span></td><td><span lang="en">German, Italian, Portuguese voices</span><span lang="tr">Almanca, İtalyanca, Portekizce sesler</span></td><td>CC BY 4.0</td></tr>
+            <tr><td><strong><a href="http://en.arabicspeechcorpus.com/">Arabic Speech Corpus</a></strong> · Nawar Halabi</td><td><span lang="en">Arabic voice</span><span lang="tr">Arapça ses</span></td><td>CC BY 4.0</td></tr>
+            <tr><td><strong><a href="https://doi.org/10.7488/ds/1705">SIWIS French Speech Synthesis Database</a></strong> · Honnet, Lazaridis, Garner, Yamagishi</td><td><span lang="en">French voice</span><span lang="tr">Fransızca ses</span></td><td>CC BY 4.0</td></tr>
+            <tr><td><strong><a href="https://www.openslr.org/93/">AISHELL-3</a></strong> · Shi, Bu, Xu, Zhang, Li (Beijing Shell Shell Technology)</td><td><span lang="en">Chinese voices</span><span lang="tr">Çince sesler</span></td><td>Apache-2.0</td></tr>
+            <tr><td><strong><a href="https://github.com/CheyneyComputerScience/CREMA-D">CREMA-D</a></strong> · Cao, Cooper, Keutmann, Gur, Nenkova, Verma (2014)</td><td><span lang="en">emotion examples</span><span lang="tr">duygu örnekleri</span></td><td>ODbL 1.0 / DbCL 1.0</td></tr>
+            <tr><td><strong><a href="https://zenodo.org/records/4060432">FSD50K</a></strong> / Freesound · bwav, Eneasz, Reitanna</td><td><span lang="en">laugh recordings</span><span lang="tr">kahkaha kayıtları</span></td><td>CC0-1.0</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/Nekochu/RVC-VCTK_Voice-sample">RVC VCTK voice samples</a></strong> · Nekochu</td><td><span lang="en">optional RVC voices</span><span lang="tr">isteğe bağlı RVC sesleri</span></td><td>Apache-2.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="reveal"><span lang="en">The promo video</span><span lang="tr">Tanıtım videosu</span></h3>
+      <div class="tbl glass reveal">
+        <table>
+          <tbody>
+            <tr><td><strong lang="en">Music</strong><strong lang="tr">Müzik</strong></td><td><a href="https://opengameart.org/node/97098">“Calm Ambient 1 (Synthwave 4k)”</a> · cynicmusic (CC0) — <a href="https://opengameart.org/content/scaling-up">“Scaling Up”</a> · Ruskerdax (CC0)</td></tr>
+            <tr><td><strong lang="en">Voices</strong><strong lang="tr">Sesler</strong></td><td><span lang="en">All speech and singing generated by Sesgâh. Voice prompts: Turkish from Common Voice (CC0); English from LibriTTS-R; Spanish, French and Japanese from FLEURS-R; German from CML-TTS; Arabic from the Arabic Speech Corpus (all CC BY 4.0); Chinese from AISHELL-3 (Apache-2.0).</span><span lang="tr">Bütün konuşma ve şarkıyı Sesgâh üretti. Ses istemleri: Türkçe Common Voice (CC0); İngilizce LibriTTS-R; İspanyolca, Fransızca ve Japonca FLEURS-R; Almanca CML-TTS; Arapça Arabic Speech Corpus (hepsi CC BY 4.0); Çince AISHELL-3 (Apache-2.0).</span></td></tr>
+            <tr><td><strong lang="en">Sound effects</strong><strong lang="tr">Efektler</strong></td><td><span lang="en">Synthesized for the video.</span><span lang="tr">Video için sentezlendi.</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big"><span lang="en">Your voice is in your hands now.</span><span lang="tr">Sesin artık senin elinde.</span></div>
+    <p><span lang="en">Sesgâh by</span><span lang="tr">Sesgâh ·</span> <a href="https://github.com/feomatif">feomatif</a> · <a href="https://github.com/feomatif/sesgah">github.com/feomatif/sesgah</a></p>
+  </div>
+</footer>
+</body>
+</html>
